@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8694826889e894c854e6033a4ef480, type: 3}
+  m_Name: Absolution
+  m_EditorClassIdentifier: 
+  gunName: Absolution
+  gunSubTitle: Now Kneel
+  gunDescription: Deadliest Sniper... perhaps?
+  gunFireSpeed: 10
+  gunPrefab: {fileID: 9028580339747694192, guid: f795c4d1a91fc544fbb3e28a9ec45597, type: 3}
+  gunSymbol: {fileID: 2728346674274160565, guid: 421ef746bc578a44ab50572341c79654, type: 3}

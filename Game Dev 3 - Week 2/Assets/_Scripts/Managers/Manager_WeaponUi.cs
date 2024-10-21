@@ -5,12 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 using GameDevWithMarco.ScriptableObjects;
 
-namespace GameDevWithMarco
+namespace GameDevWithMarco.Managers
 {
     public class Manager_WeaponUi : MonoBehaviour
     {
-
-        //References to the UI elements that we want to change 
+        // References to the UI elements that we want to change 
         public TMP_Text gunName;
         public TMP_Text gunSubTitle;
         public TMP_Text gunDescription;
@@ -18,47 +17,41 @@ namespace GameDevWithMarco
         public GunsType_ScriptableObject[] gunsSO;
         private int currentIndex = 0;
 
+        // Reference to the gun execution manager to spawn the new 3D gun
+        private Manager_Execution gunExecutionScript;
 
-
-        //The method has a parameter of type scp_GunsType_ScriptableObject in 
-        //order to be versatile when we need to use it.
-        public void AssignUI(GunsType_ScriptableObject currentSO)
+        void Start()
         {
-            //These lines of code will assign the data we have in the s.o. to the Ui
-            gunName.text = gunsSO[currentIndex].gunName;
-            gunSubTitle.text = gunsSO[currentIndex].gunSubTitle;
-            gunDescription.text = gunsSO[currentIndex].gunDescription;
-            gunSymbol.sprite = gunsSO[currentIndex].gunSymbol.sprite;
+            // Find the Manager_Execution script
+            gunExecutionScript = FindObjectOfType<Manager_Execution>();
         }
 
-        public void DisplayItem(bool Next)
+        // Assigns the UI data
+        public void AssignUI(GunsType_ScriptableObject currentSO)
         {
-            if (Next)
+            gunName.text = currentSO.gunName;
+            gunSubTitle.text = currentSO.gunSubTitle;
+            gunDescription.text = currentSO.gunDescription;
+            gunSymbol.sprite = currentSO.gunSymbol.sprite;
+        }
+
+        // Cycles between guns and updates both UI and 3D model
+        public void DisplayItem(bool next)
+        {
+            if (next)
             {
-                if (currentIndex + 1 > gunsSO.Length - 1)
-                {
-                    currentIndex = 0;
-                }
-                else
-                {
-                    currentIndex++;
-                }
+                currentIndex = (currentIndex + 1) % gunsSO.Length;
             }
             else
             {
-                if (currentIndex - 1 < 0)
-                {
-                    currentIndex = gunsSO.Length - 1;
-                }
-                else
-                {
-                    currentIndex--;
-                }
+                currentIndex = (currentIndex - 1 + gunsSO.Length) % gunsSO.Length;
             }
-            gunName.text = gunsSO[currentIndex].gunName;
-            gunSubTitle.text = gunsSO[currentIndex].gunSubTitle;
-            gunDescription.text = gunsSO[currentIndex].gunDescription;
-            gunSymbol.sprite = gunsSO[currentIndex].gunSymbol.sprite;
+
+            GunsType_ScriptableObject currentSO = gunsSO[currentIndex];
+            AssignUI(currentSO);
+
+            // Call the Manager_Execution to update the 3D model
+            gunExecutionScript.UpdateActiveGun(currentSO);
         }
     }
 }

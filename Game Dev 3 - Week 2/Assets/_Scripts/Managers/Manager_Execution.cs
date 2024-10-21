@@ -18,22 +18,20 @@ namespace GameDevWithMarco.Managers
         //This variable will contain an array of gun scriptable objects
         public GunsType_ScriptableObject[] gunScriptableObjects;
 
-        //This variable will be used to see what scriptable object is currently in use
+        //This variable will be used to see what scriptable 
         [SerializeField] private GunsType_ScriptableObject activeScriptableObject;
 
-        //Reference to the gun ui manager
-        Manager_WeaponUi gunUiScript;
-        //Reference to the gun 3d manager
-        Manager_Gun3dManager gun3dScript;
+        // Reference to the gun UI manager
+        private Manager_WeaponUi gunUiScript;
 
-
-
+        // Reference to the gun 3D manager
+        private Manager_Gun3dManager gun3dScript;
 
         void Start()
         {
-            //Fills the variables with references to the other scripts
+            // Fill the variables with references to the other scripts
             FindScripts();
-            //Executes the methods from the other scripts, and uses the data from the first S.O. in the array
+            // Execute the methods from the other scripts and use data from the first S.O. in the array
             FirstRun();
         }
 
@@ -45,12 +43,19 @@ namespace GameDevWithMarco.Managers
 
         private void FirstRun()
         {
-            //Will set the variable to be the first s.o. in the array
+            // Set the variable to be the first S.O. in the array
             activeScriptableObject = gunScriptableObjects[0];
 
-            //Will execute the methods from the other scripts
+            // Execute the methods from the other scripts
             gunUiScript.AssignUI(activeScriptableObject);
             gun3dScript.SpawnGun(activeScriptableObject);
+        }
+
+        // New method to update the active gun
+        public void UpdateActiveGun(GunsType_ScriptableObject newActiveGun)
+        {
+            activeScriptableObject = newActiveGun;
+            gun3dScript.SpawnGun(newActiveGun);
         }
     }
 }

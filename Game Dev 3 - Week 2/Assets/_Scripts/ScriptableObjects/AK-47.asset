@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b8694826889e894c854e6033a4ef480, type: 3}
-  m_Name: Absolution
+  m_Name: AK-47
   m_EditorClassIdentifier: 
-  gunName: AK-47
-  gunSubTitle: 'Behold: The classic'
-  gunDescription: Fires cartiages, cost dollars. WHO TOUCH GUN-
-  gunFireSpeed: 20
-  gunPrefab: {fileID: 9028580339747694192, guid: 2e8eabdc585ac884ea8a50872cf6f1fa, type: 3}
-  gunSymbol: {fileID: 2728346674274160565, guid: 00081108b70686c4c806b6e4fd95a133, type: 3}
+  gunName: Widow Maker
+  gunSubTitle: Nobody Likes Bad Company
+  gunDescription: Boom Bam Badabap Bom Pow
+  gunFireSpeed: 10
+  gunPrefab: {fileID: 9028580339747694192, guid: 73e36905d00f17c4cb2aee5f165226dc, type: 3}
+  gunSymbol: {fileID: 0}

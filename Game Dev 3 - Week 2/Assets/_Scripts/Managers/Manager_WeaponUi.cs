@@ -15,6 +15,8 @@ namespace GameDevWithMarco
         public TMP_Text gunSubTitle;
         public TMP_Text gunDescription;
         public Image gunSymbol;
+        public GunsType_ScriptableObject[] gunsSO;
+        private int currentIndex = 0;
 
 
 
@@ -23,11 +25,40 @@ namespace GameDevWithMarco
         public void AssignUI(GunsType_ScriptableObject currentSO)
         {
             //These lines of code will assign the data we have in the s.o. to the Ui
-            gunName.text = currentSO.gunName;
-            gunSubTitle.text = currentSO.gunSubTitle;
-            gunDescription.text = currentSO.gunDescription;
-            gunSymbol.sprite = currentSO.gunSymbol.sprite;
+            gunName.text = gunsSO[currentIndex].gunName;
+            gunSubTitle.text = gunsSO[currentIndex].gunSubTitle;
+            gunDescription.text = gunsSO[currentIndex].gunDescription;
+            gunSymbol.sprite = gunsSO[currentIndex].gunSymbol.sprite;
         }
 
+        public void DisplayItem(bool Next)
+        {
+            if (Next)
+            {
+                if (currentIndex + 1 > gunsSO.Length - 1)
+                {
+                    currentIndex = 0;
+                }
+                else
+                {
+                    currentIndex++;
+                }
+            }
+            else
+            {
+                if (currentIndex - 1 < 0)
+                {
+                    currentIndex = gunsSO.Length - 1;
+                }
+                else
+                {
+                    currentIndex--;
+                }
+            }
+            gunName.text = gunsSO[currentIndex].gunName;
+            gunSubTitle.text = gunsSO[currentIndex].gunSubTitle;
+            gunDescription.text = gunsSO[currentIndex].gunDescription;
+            gunSymbol.sprite = gunsSO[currentIndex].gunSymbol.sprite;
+        }
     }
 }

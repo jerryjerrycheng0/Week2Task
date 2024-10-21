@@ -28,6 +28,7 @@ namespace GameDevWithMarco.Managers
 
 
 
+
         void Start()
         {
             //Fills the variables with references to the other scripts

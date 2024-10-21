@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace GameDevWithMarco.Guns
 {
-    public class Guns_Shotgun : Guns_Parent
+    public class Guns_BigGun : Guns_Parent
     {
         public override void GunSound()
         {
-            gunAudioSource.pitch = Random.Range(1f, 1.5f);
+            gunAudioSource.pitch = Random.Range(0.2f, 0.5f);
 
             gunAudioSource.PlayOneShot(gunSound);
         }

@@ -8,14 +8,14 @@ namespace GameDevWithMarco.Guns
     {
         public override void GunSound()
         {
-            gunAudioSource.pitch = Random.Range(0.2f, 0.5f);
+            gunAudioSource.pitch = Random.Range(0.2f, 0.5f); //Big guns has deep sounds
 
             gunAudioSource.PlayOneShot(gunSound);
         }
 
         public override void MuzzleFlash()
         {
-            base.MuzzleFlash();
+            base.MuzzleFlash(); //Overrides the original MuzzleFlash method
 
             ParticleSystem.MainModule muzzleFlashParticles = muzzleFlash.GetComponent<ParticleSystem>().main;
 

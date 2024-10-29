@@ -9,12 +9,11 @@ namespace GameDevWithMarco.Managers
 {
     public class Manager_WeaponUi : MonoBehaviour
     {
-        // References to the UI elements that we want to change 
         public TMP_Text gunName;
         public TMP_Text gunSubTitle;
         public TMP_Text gunDescription;
         public Image gunSymbol;
-        public GunsType_ScriptableObject[] gunsSO;
+        public GunsType_ScriptableObject[] gunsSO; //An array of scriptable guns
         private int currentIndex = 0;
 
         // Reference to the gun execution manager to spawn the new 3D gun
@@ -22,11 +21,11 @@ namespace GameDevWithMarco.Managers
 
         void Start()
         {
-            // Find the Manager_Execution script
+            
             gunExecutionScript = FindObjectOfType<Manager_Execution>();
         }
 
-        // Assigns the UI data
+        //Assigns the UI data
         public void AssignUI(GunsType_ScriptableObject currentSO)
         {
             gunName.text = currentSO.gunName;
@@ -38,19 +37,20 @@ namespace GameDevWithMarco.Managers
         // Cycles between guns and updates both UI and 3D model
         public void DisplayItem(bool next)
         {
+            //The boolean "next" is used to determine if the list goes forwards or backwards
             if (next)
             {
-                currentIndex = (currentIndex + 1) % gunsSO.Length;
+                currentIndex = (currentIndex + 1) % gunsSO.Length; //List goes forwards
             }
             else
             {
-                currentIndex = (currentIndex - 1 + gunsSO.Length) % gunsSO.Length;
+                currentIndex = (currentIndex - 1 + gunsSO.Length) % gunsSO.Length; //List goes backwards
             }
 
             GunsType_ScriptableObject currentSO = gunsSO[currentIndex];
             AssignUI(currentSO);
 
-            // Call the Manager_Execution to update the 3D model
+            //Showcase the current gun
             gunExecutionScript.UpdateActiveGun(currentSO);
         }
     }

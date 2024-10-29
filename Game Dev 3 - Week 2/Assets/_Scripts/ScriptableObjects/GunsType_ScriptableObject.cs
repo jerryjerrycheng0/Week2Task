@@ -14,13 +14,13 @@ namespace GameDevWithMarco.ScriptableObjects
     {
         //These variables are just data that we can customise when creating a new scriptable object!
         //We will use these to easily create more guns
-        public string gunName;
-        public string gunSubTitle;
-        public string gunDescription;
-        public string gunFireSpeed;
+        public string gunName; //Name of the gun
+        public string gunSubTitle; //Subtitle of the gun
+        public string gunDescription; //Description of the gun
+        public string gunFireSpeed; //Fire speed of the gun
 
-        public GameObject gunPrefab;
-        public Image gunSymbol;
+        public GameObject gunPrefab; //Prefab and appearance of the gun
+        public Image gunSymbol; //Symbol of the gun
 
     }
 }

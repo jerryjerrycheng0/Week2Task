@@ -21,8 +21,9 @@ namespace GameDevWithMarco.Guns
         }
 
         // Coroutine to handle the muzzle flash delay
-        private IEnumerator DelayedMuzzleFlash()
+        private IEnumerator DelayedMuzzleFlash() 
         {
+            //Overrides the MuzzleFlash method to provide a delay
             // Wait for the specified delay time
             yield return new WaitForSeconds(muzzleFlashDelay);
 
